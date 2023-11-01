@@ -1,4 +1,4 @@
-package objects.application;
+package application;
 
 public class TextGUI {
     
