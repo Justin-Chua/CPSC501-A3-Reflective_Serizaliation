@@ -1,9 +1,18 @@
 package application;
 
+import java.util.*;
+
 public class TextGUI {
     
+    // use Scanner library to handle user input
+    private Scanner input = new Scanner(System.in);
 
+    private void run() {
+
+    }
+    
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        TextGUI gui = new TextGUI();
+        gui.run();
     }
 }
