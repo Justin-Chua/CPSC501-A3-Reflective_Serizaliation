@@ -44,8 +44,9 @@ public class Serializer {
                     Element reference = new Element("reference");
                     // set reference id
                     reference.setText(Integer.toString(this.serializedObjects.size() + i));
-                    // add to recursiveObjects
-                    recursiveObjects.add(Array.get(obj, i));
+                    // add to recursiveObjects, only if it has not already been serialized
+                    if (!this.serializedObjects.containsKey(Array.get(obj, i).hashCode()))
+                        recursiveObjects.add(Array.get(obj, i));
                     // add reference as content to our obj
                     objElement.addContent(reference);
                 }
