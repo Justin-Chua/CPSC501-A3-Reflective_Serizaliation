@@ -15,7 +15,7 @@ public class ObjectCollection {
     }
 
     // setter method for unit instance variable
-    public void setUnit(long number) {
+    public void setNumber(long number) {
         this.number = number;
     }
 

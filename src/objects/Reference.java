@@ -1,16 +1,16 @@
 package objects;
 
-// Class satisfying bullet point 3
+// Class satisfying bullet point 2
 public class Reference {
     
     // Primitive object
     private Primitive primitive;
-    // Circular1 object - shares circular reference to Circular2
-    private Circular1 circular;
+    // Circular object
+    private Circular circular;
 
     public Reference() {
         this.primitive = new Primitive();
-        this.circular = new Circular1();
+        this.circular = new Circular();
     }
 
     // getter methods for all instance variables, so that we can access them and set their fields
@@ -18,7 +18,7 @@ public class Reference {
         return this.primitive;
     }
 
-    public Circular1 getCircular() {
+    public Circular getCircular() {
         return this.circular;
     }
 

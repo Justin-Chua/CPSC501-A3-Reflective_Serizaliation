@@ -17,6 +17,11 @@ public class ReferenceArray {
     public ReferenceArray(int size) {
         this.unit = 100;
         this.primitiveArray = new Primitive[size];
+
+        // initialize each element to a default Primitive object
+        for (int i = 0; i < size; i++) {
+            this.primitiveArray[i] = new Primitive();
+        }
     }
 
     // setter method for unit instance variable
@@ -24,8 +29,9 @@ public class ReferenceArray {
         this.unit = unit;
     }
 
-
-    /* going off assumption that field of each object does not need to be settable.
-       * WAITING ON RESPONSE FROM TA * */
+    // getter method for element of primitiveArray by index
+    public Primitive getElementPrimitiveArray(int index) {
+        return this.primitiveArray[index];
+    }
 
 }
