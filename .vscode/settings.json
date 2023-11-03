@@ -1,0 +1,6 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "e:\\JDOM\\jdom-2.0.6.1\\jdom-2.0.6.1.jar"
+    ]
+}

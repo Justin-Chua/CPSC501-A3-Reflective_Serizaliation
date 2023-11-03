@@ -2,6 +2,7 @@ package application;
 
 import java.util.*;
 import objects.*;
+import serializer.*;
 
 public class TextGUI {
     
@@ -349,11 +350,14 @@ public class TextGUI {
             default:
                 System.out.println("Invalid choice"); break;
         }
-        
+
         // close scanner
         this.INPUT.close();
 
-        // iterate through userObjects, invoke serialize on each element
+        // create new serializer
+        Serializer serializer = new Serializer();
+        for (Object obj : userObjects)
+            serializer.serialize(obj);
     }
     
     public static void main(String[] args) {
