@@ -8,8 +8,8 @@ public class TextGUI {
     
     // use Scanner library to handle user input
     private final Scanner INPUT = new Scanner(System.in);
-    // create ArrayList of Object type to hold all user created objects
-    private ArrayList<Object> userObjects = new ArrayList<Object>();
+    // create uninitialized Object
+    private Object userObject;
 
     // used to handle creation of object type 1 in text interface
     private void createPrimitive() {
@@ -48,8 +48,7 @@ public class TextGUI {
         if (!userInput.isEmpty() && userInput == "true")
             obj.setCondition(true);
 
-        // now, all fields have presumably been set. Add object to userObjects
-        userObjects.add(obj);
+        userObject = obj;
         // print message stating that object has been created
         System.out.println("(1) Primitive object created.\n" + 
         "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
@@ -113,8 +112,7 @@ public class TextGUI {
         obj2.setCircular(obj.getCircular());
         obj.getCircular().setCircular(obj2.getCircular());
 
-        // now, all fields have presumably been set. Add object to userObjects
-        userObjects.add(obj);
+        userObject = obj;
         // print message stating that object has been created
         System.out.println("(2) Reference object created.\n" + 
         "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
@@ -161,8 +159,7 @@ public class TextGUI {
 
         }
 
-        // now, all fields have presumably been set. Add object to userObjects
-        userObjects.add(obj);
+        userObject = obj;
         // print message stating that object has been created
         System.out.println("(3) PrimitiveArray object created.\n" + 
         "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
@@ -233,8 +230,7 @@ public class TextGUI {
                 obj.getElementPrimitiveArray(i).setCondition(true);
         }
 
-        // now, all fields have presumably been set. Add object to userObjects
-        userObjects.add(obj);
+        userObject = obj;
         // print message stating that object has been created
         System.out.println("(4) ReferenceArray object created.\n" + 
         "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
@@ -307,14 +303,13 @@ public class TextGUI {
             obj.addElementPrimitiveArrayList(element);
         }
 
-        // now, all fields have presumably been set. Add object to userObjects
-        userObjects.add(obj);
+        userObject = obj;
         // print message stating that object has been created
         System.out.println("(5) ObjectCollection object created.\n" + 
         "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     }
 
-    private void run() {
+    public void run() {
         /* AUTHOR NOTE: runs off the presumption that only valid inputs are supplied
          * for each line as of now. Input handling to be added later
          */
@@ -354,14 +349,10 @@ public class TextGUI {
         // close scanner
         this.INPUT.close();
 
-        // create new serializer
-        Serializer serializer = new Serializer();
-        for (Object obj : userObjects)
-            serializer.serialize(obj);
+    }
+
+    public Object getUserObject() {
+        return this.userObject;
     }
     
-    public static void main(String[] args) {
-        TextGUI gui = new TextGUI();
-        gui.run();
-    }
 }
