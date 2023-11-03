@@ -13,8 +13,7 @@ public class Sender {
     public static void main(String[] args) {
         // start by calling TextGUI so that we can create an object
         TextGUI gui = new TextGUI();
-        gui.run();
-        Object userObject = gui.getUserObject();
+        Object userObject = gui.run();
 
         // send userObject to the serializer
         Serializer serializer = new Serializer();

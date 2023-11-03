@@ -8,11 +8,9 @@ public class TextGUI {
     
     // use Scanner library to handle user input
     private final Scanner INPUT = new Scanner(System.in);
-    // create uninitialized Object
-    private Object userObject;
 
     // used to handle creation of object type 1 in text interface
-    private void createPrimitive() {
+    private Primitive createPrimitive() {
         // initialize temp variable to store user inputs
         String userInput;
         // print message stating that (1) Primitive was chosen by user
@@ -48,15 +46,16 @@ public class TextGUI {
         if (!userInput.isEmpty() && userInput == "true")
             obj.setCondition(true);
 
-        userObject = obj;
         // print message stating that object has been created
         System.out.println("(1) Primitive object created.\n" + 
         "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 
+        return obj;
+
     }
 
     // used to handle creation of object type 2 in text interface
-    private void createReference() {
+    private Reference createReference() {
         // initialize temp variable to store user inputs
         String userInput;
         // print message stating that (2) Reference was chosen by user
@@ -112,14 +111,15 @@ public class TextGUI {
         obj2.setCircular(obj.getCircular());
         obj.getCircular().setCircular(obj2.getCircular());
 
-        userObject = obj;
         // print message stating that object has been created
         System.out.println("(2) Reference object created.\n" + 
         "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 
+        return obj;
+
     }
 
-    private void createPrimitiveArray() {
+    private PrimitiveArray createPrimitiveArray() {
         // initialize temp variable to store user inputs
         String userInput;
         // print message stating that (3) PrimitiveArray was chosen by user
@@ -159,14 +159,15 @@ public class TextGUI {
 
         }
 
-        userObject = obj;
         // print message stating that object has been created
         System.out.println("(3) PrimitiveArray object created.\n" + 
         "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+
+        return obj;
         
     }
 
-    private void createReferenceArray() {
+    private ReferenceArray createReferenceArray() {
         // initialize temp variable to store user inputs
         String userInput;
         // print message stating that (4) ReferenceArray was chosen by user
@@ -230,14 +231,15 @@ public class TextGUI {
                 obj.getElementPrimitiveArray(i).setCondition(true);
         }
 
-        userObject = obj;
         // print message stating that object has been created
         System.out.println("(4) ReferenceArray object created.\n" + 
         "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 
+        return obj;
+
     }
 
-    private void createObjectCollection() {
+    private ObjectCollection createObjectCollection() {
         // initialize temp variable to store user inputs
         String userInput;
         // print message stating that (4) ReferenceArray was chosen by user
@@ -303,13 +305,14 @@ public class TextGUI {
             obj.addElementPrimitiveArrayList(element);
         }
 
-        userObject = obj;
         // print message stating that object has been created
         System.out.println("(5) ObjectCollection object created.\n" + 
         "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+
+        return obj;
     }
 
-    public void run() {
+    public Object run() {
         /* AUTHOR NOTE: runs off the presumption that only valid inputs are supplied
          * for each line as of now. Input handling to be added later
          */
@@ -330,18 +333,19 @@ public class TextGUI {
 
         // prompt user to make selection
         System.out.print("Please select an object to create (1-5): ");
+        Object obj = null;
         String objectSelection = this.INPUT.nextLine();
         switch(objectSelection) {
             case "1":
-                this.createPrimitive(); break;
+                obj = this.createPrimitive(); break;
             case "2":
-                this.createReference(); break;
+                obj = this.createReference(); break;
             case "3":
-                this.createPrimitiveArray(); break; 
+                obj = this.createPrimitiveArray(); break; 
             case "4":
-                this.createReferenceArray(); break;
+                obj = this.createReferenceArray(); break;
             case "5":
-                this.createObjectCollection(); break;
+                obj = this.createObjectCollection(); break;
             default:
                 System.out.println("Invalid choice"); break;
         }
@@ -349,10 +353,8 @@ public class TextGUI {
         // close scanner
         this.INPUT.close();
 
-    }
+        return obj;
 
-    public Object getUserObject() {
-        return this.userObject;
     }
     
 }
