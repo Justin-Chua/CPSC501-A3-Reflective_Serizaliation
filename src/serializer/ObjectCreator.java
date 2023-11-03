@@ -1,10 +1,9 @@
-package application;
+package serializer;
 
 import java.util.*;
 import objects.*;
-import serializer.*;
 
-public class TextGUI {
+public class ObjectCreator {
     
     // use Scanner library to handle user input
     private final Scanner INPUT = new Scanner(System.in);

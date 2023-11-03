@@ -6,13 +6,11 @@ import org.jdom2.*;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
-import application.*;
-
 public class Sender {
 
     public static void main(String[] args) {
         // start by calling TextGUI so that we can create an object
-        TextGUI gui = new TextGUI();
+        ObjectCreator gui = new ObjectCreator();
         Object userObject = gui.run();
 
         // send userObject to the serializer
